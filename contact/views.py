@@ -14,15 +14,24 @@ def contact(request):
             name = request.POST.get("name", "")
             content = request.POST.get("content", "")
             email = request.POST.get("email", "")
+            phone = request.POST.get("phone", "")
             link = reverse('contact')
             
-            # Se envía un correo
+            # Se envía un correo al cliente
             subject = "Gracias por contactarnos"
-            message = "Hola {name} , gracias por ponerse en contacto con nosotros"
+            message = "Hola " + name + " gracias por ponerse en contacto con nosotros"
             email_from = settings.EMAIL_HOST_USER
             email_for = [email,]
 
-            send_mail(subject, message, email_from,email_for)
+            send_mail(subject, message, email_from, email_for)
+
+            # Se envía un correo al admin
+            subject = "Contacto mediante sitio web"
+            message = "Nombre: " + name + "\nTeléfono: " + phone + "\nCorreo: " + email + "\n" + content 
+            email_from = settings.EMAIL_HOST_USER
+            email_for = [settings.EMAIL_HOST_USER, ]
+
+            send_mail(subject, message, email_from, email_for)
 
             return redirect(link + '?ok') 
 
