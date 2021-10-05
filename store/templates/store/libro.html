@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    
+    <!-- Page Content-->
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center mb-5">
+                        <h1 class="fw-bolder"> {{libro.title}} </h1>
+                        <p class="lead fw-normal text-muted mb-0">{{libro.description|safe|truncatechars:"250"}}</p>
+                        <a class="text-decoration-none" target="_blank" href="{{ libro.book.url }}">
+                            Ver libro
+                            <i class="bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5">
+                <div class="col-12"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/1300x700/343a40/6c757d" alt="..." /></div>
+                <!-- <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div> -->
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-9">
+                    <h3 class="fw-bolder text-center">Descripción: </h3>
+                    <div class="mb-5">
+                        <p class="lead fw-normal text-muted">{{libro.description|safe}}</p>
+                        <a class="text-decoration-none" target="_blank" href="{{ libro.book.url }}">
+                            Ver libro
+                            <i class="bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
