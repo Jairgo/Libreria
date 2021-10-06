@@ -11,7 +11,8 @@
             {% for libro in libros %}
             <div class="col-lg-6">
                 <div class="position-relative mb-5">
-                    <img class="img-fluid rounded-3 mb-3" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." />
+                    <!-- https://dummyimage.com/600x400/343a40/6c757d  -->
+                    <img class="img-fluid rounded-3 mb-3" src="https://picsum.photos/id/24/600/400" alt="..." />
                     <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="{% url 'libro' libro.id %}"> {{libro.title}} </a>
                 </div>
             </div>
@@ -21,8 +22,8 @@
 </section>
 <section class="py-5 bg-light">
     <div class="container px-5 my-5">
-        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-        <a class="btn btn-lg btn-primary" href="#!">Contact us</a>
+        <h2 class="display-4 fw-bolder mb-4">¡Contruyamos algo juntos!</h2>
+        <a class="btn btn-lg btn-primary" href="{% url 'contact' %}">Contáctanos</a>
     </div>
 </section>
 {% endblock %}
