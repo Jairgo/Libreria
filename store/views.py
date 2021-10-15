@@ -37,6 +37,7 @@ class StoreUpdateView(UpdateView):
     # success_url = reverse_lazy('libros:update')
 
     def get_success_url(self):
+        print("Hola")
         return reverse_lazy('libros:update', args=[self.object.id]) + '?ok'
 
 class StoreDeleteView(DeleteView):

@@ -8,15 +8,15 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center mb-5">
-                        <h1 class="fw-bolder"> {{libro.title}} </h1>
-                        <p class="lead fw-normal text-muted mb-0">{{libro.description|safe|truncatechars:"250"}}</p>
-                        <a class="text-decoration-none" target="_blank" href="{{ libro.book.url }}">
+                        <h1 class="fw-bolder"> {{store.title}} </h1>
+                        <p class="lead fw-normal text-muted mb-0">{{store.description|safe|truncatechars:"250"}}</p>
+                        <a class="text-decoration-none" target="_blank" href="{{ store.book.url }}">
                             Ver libro
                             <i class="bi-arrow-right"></i>
                         </a>
                         {% if request.user.is_staff %}
                         <p>
-                            <a class="btn btn-primary" href="{% url 'libros:update' libro.id %}" role="button">Editar Libro</a>
+                            <a class="btn btn-primary" href="{% url 'libros:update' store.id %}" role="button">Editar Libro</a>
                         </p>
                         {% endif %}
                     </div>
@@ -32,8 +32,8 @@
                 <div class="col-lg-9">
                     <h3 class="fw-bolder text-center">Descripción: </h3>
                     <div class="mb-5">
-                        <p class="lead fw-normal text-muted">{{libro.description|safe}}</p>
-                        <a class="text-decoration-none" target="_blank" href="{{ libro.book.url }}">
+                        <p class="lead fw-normal text-muted">{{store.description|safe}}</p>
+                        <a class="text-decoration-none" target="_blank" href="{{ store.book.url }}">
                             Ver libro
                             <i class="bi-arrow-right"></i>
                         </a>
