@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
 {% block content %}
+{% include 'store/includes/menu_store.html' %}
+
 <!-- Page Content-->
 <section class="py-5">
     <div class="container px-5 my-5">
@@ -8,12 +10,13 @@
             <p class="lead fw-normal text-muted mb-0">libros disponibles</p>
         </div>
         <div class="row gx-5">
-            {% for libro in libros %}
+            {% for libro in store_list %}
             <div class="col-lg-6">
                 <div class="position-relative mb-5">
                     <!-- https://dummyimage.com/600x400/343a40/6c757d  -->
-                    <img class="img-fluid rounded-3 mb-3" src="https://picsum.photos/id/24/600/400" alt="..." />
-                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="{% url 'libro' libro.id %}"> {{libro.title}} </a>
+                    <img class="img-fluid rounded-3 mb-3" src="https://picsum.photos/id/24/600/400" alt="..." /> 
+                    <!-- libro.title|slugify  -->
+                    <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="{% url 'libros:libro' libro.id %}"> {{libro.title}} </a>
                 </div>
             </div>
             {% endfor %}

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from core import views
+from store.urls import store_patterns
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -29,7 +30,7 @@ urlpatterns = [
     path('portfolio-item/', views.portfolioitem, name="portfolio-item"),
     path('portfolio-overview/', views.portfoliooverview, name="portfolio-overview"),
     path('contact/', include('contact.urls')),
-    path('store/', include('store.urls')),
+    path('store/', include(store_patterns)),
 ]
 
 if settings.DEBUG:

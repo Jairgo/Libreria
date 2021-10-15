@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% block content %}
+{% include 'store/includes/menu_store.html' %}
     
     <!-- Page Content-->
     <section class="py-5">
@@ -13,6 +14,11 @@
                             Ver libro
                             <i class="bi-arrow-right"></i>
                         </a>
+                        {% if request.user.is_staff %}
+                        <p>
+                            <a class="btn btn-primary" href="{% url 'libros:update' libro.id %}" role="button">Editar Libro</a>
+                        </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
