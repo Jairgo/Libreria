@@ -10,13 +10,14 @@
                     <div class="text-center mb-5">
                         <h1 class="fw-bolder"> {{store.title}} </h1>
                         <p class="lead fw-normal text-muted mb-0">{{store.description|safe|truncatechars:"250"}}</p>
-                        <a class="text-decoration-none" target="_blank" href="{{ store.book.url }}">
+                        <a class="text-decoration-none btn btn-success mb-4" target="_blank" href="{{ store.book.url }}">
                             Ver libro
                             <i class="bi-arrow-right"></i>
                         </a>
                         {% if request.user.is_staff %}
                         <p>
-                            <a class="btn btn-primary" href="{% url 'libros:update' store.id %}" role="button">Editar Libro</a>
+                            <a class="btn btn-warning" href="{% url 'libros:update' store.id %}" role="button"><i class="bi bi-pencil-square"></i> Editar Libro</a>
+                            <a class="btn btn-danger" href="{% url 'libros:delete' store.id %}" role="button"><i class="bi bi-trash"></i> Eliminar Libro</a>
                         </p>
                         {% endif %}
                     </div>

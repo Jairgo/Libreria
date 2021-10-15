@@ -12,13 +12,13 @@
                     ¡Actualización hecha correctamente!
                 </p>
               {% endif  %}
-              <form action="" method="post">
+              <form action="" method="post" class="text-dark">
                 {% csrf_token %}
                     <table>
                         {{ form.as_table }}
                     </table>
                   <br>
-                  <input type="submit" value="Actualizar Libro" />
+                  <input class="btn btn-success" type="submit" value="Actualizar Libro" />
               </form>
           </div>
         </div>

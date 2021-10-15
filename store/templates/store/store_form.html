@@ -9,11 +9,11 @@
           <div>
               <form action="" method="post">
                 {% csrf_token %}
-                    <table>
+                    <table class="text-dark">
                         {{ form.as_table }}
                     </table>
                   <br>
-                  <input type="submit" value="Crear Receta" />
+                  <input type="submit" class="btn btn-success" value="Crear Receta" />
               </form>
           </div>
         </div>

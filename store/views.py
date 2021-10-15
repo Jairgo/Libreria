@@ -6,7 +6,7 @@ from .models import Store
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 
-from .forms import createBookForm
+from .forms import createBookForm, updateBookForm
 
 # from django.views.generic.list import ListView
 
@@ -27,18 +27,44 @@ class storeDetailView(DetailView):
 
 class StoreCreateView(CreateView):
     model = Store
-    fields = ['title', 'description', 'book']
+    form_class = createBookForm
+    # fields = ['title', 'description', 'book']
     success_url = reverse_lazy('libros:libros')
+
+    def form_valid(self, form):
+        # Guardar los datos del libro
+        libro = form.save(commit=False)
+        libro.save()
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        # Coloca el request disponible para el formulario
+        kwargs = super(StoreCreateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
 class StoreUpdateView(UpdateView):
     model = Store
-    fields = ['title', 'description', 'book']
+    form_class = updateBookForm
+    # fields = ['title', 'description', 'book']
     template_name_suffix = '_update_form'
     # success_url = reverse_lazy('libros:update')
 
     def get_success_url(self):
         print("Hola")
         return reverse_lazy('libros:update', args=[self.object.id]) + '?ok'
+
+    def form_valid(self, form):
+        # Guardar los datos del libro
+        libro = form.save(commit=False)
+        libro.save()
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        # Coloca el request disponible para el formulario
+        kwargs = super(StoreUpdateView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 
 class StoreDeleteView(DeleteView):
     model = Store
