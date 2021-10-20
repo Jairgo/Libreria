@@ -18,6 +18,7 @@
                     <!-- libro.title|slugify  -->
                     <a class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="{% url 'libros:libro' libro.id %}"> {{libro.title}} </a>
                 </div>
+                <a class="btn btn-success" onclick="agregaCarrito({{libro.id}});">Agregar al carrito</a>
             </div>
             {% endfor %}
         </div>
@@ -29,4 +30,18 @@
         <a class="btn btn-lg btn-primary" href="{% url 'contact' %}">Contáctanos</a>
     </div>
 </section>
+{% endblock %}
+
+{% block contentJS %}
+<script>
+    function agregaCarrito(id) {
+        if (cart[id] != undefined) {
+            cart[id] = cart[id] + 1;
+        } else {
+            cart[id] = 1
+        }
+        localStorage.setItem('cart', JSON.stringify(cart))
+        show_badge_cart();
+    }
+</script>
 {% endblock %}
