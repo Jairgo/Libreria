@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'core',
     'store',
     'contact',
-    'registration'
+    'registration',
+    'pages.apps.PagesConfig'
 ]
 
 MIDDLEWARE = [

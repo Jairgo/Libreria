@@ -32,6 +32,7 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('store/', include(store_patterns)),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('page/', include('pages.urls')),
     # Aumentar la lista de posibles urls en la raiz de la aplicación
     path('accounts/', include('registration.urls')),
 ]

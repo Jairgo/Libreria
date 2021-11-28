@@ -40,12 +40,19 @@
                                         class="badge badge-danger">0</span> </i>
                             </a>
                         </li>
+                        {% if request.user.is_staff %}
+                        <li class="nav-item {% if request.path == '/pages/' %} active {% endif %}">
+                            <a class="nav-link text-white" href="{% url 'pages' %}">Mis páginas</a>
+                        </li>
+                        {% endif %}
                         {% if not request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a type="button" class="btn btn-success mx-2" href="{% url 'login' %}">Acceder <i class="bi bi-unlock-fill"></i></a>
+                            <a type="button" class="btn btn-success mx-2" href="{% url 'login' %}">Acceder <i
+                                    class="bi bi-unlock-fill"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="btn btn-light" href="{% url 'signup' %}">¡Registrate! <i class="bi bi-person-plus-fill"></i></a>
+                            <a type="button" class="btn btn-light" href="{% url 'signup' %}">¡Registrate! <i
+                                    class="bi bi-person-plus-fill"></i></a>
                             <!-- <a class="nav-link" href="{% url 'faq' %}">FAQ</a> -->
                         </li>
                         {% else %}
@@ -55,7 +62,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Cerrar sesión <i class="bi bi-box-arrow-in-right"></i></a>
+                            <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Cerrar sesión <i
+                                    class="bi bi-box-arrow-in-right"></i></a>
                         </li>
                         {% endif %}
                         <!-- <li class="nav-item dropdown">
@@ -91,11 +99,18 @@
                     <div class="small m-0 text-white">Copyright &copy; Your Website 2021</div>
                 </div>
                 <div class="col-auto">
-                    <a class="link-light small" href="#!">Privacy</a>
+
+                    {% load pages_extras %}
+                    {% get_page_list as page_list %}
+                    {% for page in page_list %}
+                    <a class="link-light small" href="{% url 'page' page.id %}">{{page.title}}</a>
+                    {% if not forloop.last %}
                     <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Terms</a>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- <a class="link-light small" href="#!">Terms</a>
                     <span class="text-white mx-1">&middot;</span>
-                    <a class="link-light small" href="#!">Contact</a>
+                    <a class="link-light small" href="#!">Contact</a> -->
                 </div>
             </div>
         </div>
