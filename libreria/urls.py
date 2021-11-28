@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from core import views
 from store.urls import store_patterns
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -35,6 +36,8 @@ urlpatterns = [
     path('page/', include('pages.urls')),
     # Aumentar la lista de posibles urls en la raiz de la aplicación
     path('accounts/', include('registration.urls')),
+    # Social Auth
+    path('social-auth/', include('social_django.urls', namespace="social")),
 ]
 
 if settings.DEBUG:
