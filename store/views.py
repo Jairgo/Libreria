@@ -56,6 +56,8 @@ def comprar(request):
                 dict_libros['price'] = libro.price
                 total += cantidad * libro.price
                 pedido.append(dict_libros)
+        # Se guarda el total en una variable de sesión
+        request.session['total'] = float(total)
 
     return render(request, "store/detalle_compra.html", {"pedido": pedido, "total":total})
 
