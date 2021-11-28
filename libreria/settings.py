@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'store',
     'contact',
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,5 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+LOGIN_REDIRECT_URL = 'home'

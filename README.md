@@ -27,6 +27,35 @@ Si la dependencia `django-phonenumber-field` no se puede instalar con el comanad
 ```
 pip install django-phonenumber-field[phonenumbers]
 ```
+
+# NOTAS
+
+## Para crear el entorno virtual
+    - python -m venv 'name'
+
+## Para iniciar el entorno virtual:
+        - .\venv\Scripts\activate
+
+## Correr proyecto:
+Tienes que posicionarte en la ruta del proyecto
+
+    - py manage.py runserver
+    
+### Crear nueva aplicacion
+    - py manage.py startapp core
+
+### Crear migracion de datos
+    - py manage.py makemigrations
+
+### Correr la migracion
+    - py manage.py migrate
+
+### Crear usuario
+    - py manage.py createsuperuser
+
+### Crear modelo
+    - Dentro de models.py crear clases para las tablas
+
 <!-- 
 ## Authors
 

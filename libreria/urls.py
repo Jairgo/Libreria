@@ -31,6 +31,9 @@ urlpatterns = [
     path('portfolio-overview/', views.portfoliooverview, name="portfolio-overview"),
     path('contact/', include('contact.urls')),
     path('store/', include(store_patterns)),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # Aumentar la lista de posibles urls en la raiz de la aplicación
+    path('accounts/', include('registration.urls')),
 ]
 
 if settings.DEBUG:
