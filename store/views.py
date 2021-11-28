@@ -6,9 +6,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Store
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-
 from .forms import CompraForm, createBookForm, updateBookForm
-
+from django.utils.decorators import method_decorator
+from django.contrib.admin.views.decorators import staff_member_required
 class storeCreateCompra(CreateView):
     form_class = CompraForm
     template_name = 'store/compra_cliente.html'
@@ -75,7 +75,7 @@ class storeDetailView(DetailView):
 # def libro(request,libro_id):
 #     libro = Store.objects.get(id=libro_id)
 #     return render(request, 'store/libro.html', {"libro":libro})
-
+@method_decorator(staff_member_required,name='dispatch')
 class StoreCreateView(CreateView):
     model = Store
     form_class = createBookForm
@@ -93,7 +93,7 @@ class StoreCreateView(CreateView):
         kwargs = super(StoreCreateView, self).get_form_kwargs()
         kwargs['request'] = self.request
         return kwargs
-
+@method_decorator(staff_member_required,name='dispatch')
 class StoreUpdateView(UpdateView):
     model = Store
     form_class = updateBookForm
@@ -116,7 +116,7 @@ class StoreUpdateView(UpdateView):
         kwargs = super(StoreUpdateView, self).get_form_kwargs()
         kwargs['request'] = self.request
         return kwargs
-
+@method_decorator(staff_member_required,name='dispatch')
 class StoreDeleteView(DeleteView):
     model = Store
     success_url = reverse_lazy('libros:libros')
