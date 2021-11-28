@@ -13,7 +13,7 @@ class UserBackend(ModelBackend):
         except User.DoesNotExist:
                 print("Not an existing user")
 
-        if user.check_password(password):
+        if user is not None and user.check_password(password):
             try:
                 user = User.objects.get(username=username)
             except User.DoesNotExist:
